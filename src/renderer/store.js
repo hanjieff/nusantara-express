@@ -47,7 +47,7 @@
 
         if (!name.trim()) return { ok: false, error: 'Nama lengkap masih kosong.' };
         if (!emailPattern.test(cleanEmail)) return { ok: false, error: 'Format email belum benar.' };
-        if (!/^(\+62|62|0)8[1-9]…/.test(phone.trim()))
+        if (!/^(\+62|62|0)8[1-9][0-9\s-]{6,}$/.test(phone.trim()))
             return { ok: false, error: 'Nomor telepon harus aktif, contoh 081234567890.' };
         if (password.length < 6) return { ok: false, error: 'Password minimal 6 karakter.' };
         if (users.some((u) => u.email === cleanEmail))

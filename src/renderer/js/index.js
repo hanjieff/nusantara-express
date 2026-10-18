@@ -72,7 +72,7 @@
         if (from === to) return window.NX.toast('Kota asal dan tujuan tidak boleh sama.');
 
         const match = ROUTES.find((r) => r.from === from && r.to === to);
-        if (!match) return window.NX.toast('Belum ada rute langsung ${from} ke ${to}.');
+        if (!match) return window.NX.toast(`Belum ada rute langsung dari ${from} ke ${to}.`);
 
         const draft = window.NX.newDraft(match, user);
         if (searchDate.value && searchDate.value >= window.NX.todayISO()) draft.date = searchDate.value;
