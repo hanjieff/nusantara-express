@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src 'self'"
+    />
+    <title>Tiket &mdash; NusantaraExpress</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <div class="topbar-inner">
+          <div class="brand">
+            <div class="brand-mark">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v11" /><path d="M4 11h16" /><path d="M3 17h18" /><path d="M7 17v2.5" /><path d="M17 17v2.5" /><circle cx="7.5" cy="14" r=".9" fill="currentColor" stroke="none" /><circle cx="16.5" cy="14" r=".9" fill="currentColor" stroke="none" /></svg>
+            </div>
+            <div>
+              <div class="brand-name">NusantaraExpress</div>
+              <div class="brand-sub">Travel within the archipelago</div>
+            </div>
+          </div>
+          <nav class="nav">
+            <a class="nav-btn" href="index.html"><span>Beranda</span></a>
+            <a class="nav-btn" href="pesanan.html">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1" /><path d="M3.5 4.5V9H8" /><path d="M12 8v4.4l3 1.8" /></svg>
+              <span>Pesanan saya</span><span class="badge" id="order-count">0</span>
+            </a>
+            <div class="user-chip">
+              <div class="avatar" id="user-avatar">?</div>
+              <span class="user-name" id="user-name"></span>
+              <button class="logout" id="btn-logout" type="button">Keluar</button>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <div class="wrap">
+          <div class="success-head">
+            <div class="success-ico">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.8 9.8 17.5 19 7" /></svg>
+            </div>
+            <h1 id="tiket-heading">Pembayaran berhasil</h1>
+            <p id="tiket-sub"></p>
+          </div>
+
+          <div class="ticket">
+            <div class="ticket-top">
+              <div>
+                <div class="label label-invert">Kode booking</div>
+                <div class="ticket-code" id="tiket-code"></div>
+              </div>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 8V6.5A1.5 1.5 0 0 1 5.5 5h13A1.5 1.5 0 0 1 20 6.5V8a3 3 0 0 0 0 8v1.5A1.5 1.5 0 0 1 18.5 19h-13A1.5 1.5 0 0 1 4 17.5V16a3 3 0 0 0 0-8Z" /><path d="M12 8.5v7" /></svg>
+            </div>
+
+            <div class="ticket-body">
+              <div class="ticket-cell"><span class="label">Rute</span><b id="tiket-route"></b></div>
+              <div class="ticket-cell"><span class="label">Kelas</span><b id="tiket-class"></b></div>
+              <div class="ticket-cell"><span class="label">Tanggal</span><b id="tiket-date"></b></div>
+              <div class="ticket-cell"><span class="label">Jam</span><b id="tiket-time"></b></div>
+              <div class="ticket-cell"><span class="label">Penumpang</span><b id="tiket-name"></b></div>
+              <div class="ticket-cell"><span class="label">Kursi</span><b id="tiket-seats"></b></div>
+              <div class="ticket-cell"><span class="label">Operator</span><b id="tiket-operator"></b></div>
+              <div class="ticket-cell"><span class="label">Pembayaran</span><b id="tiket-method"></b></div>
+              <div class="ticket-cell" id="tiket-discount-cell" hidden>
+                <span class="label">Diskon rombongan</span><b id="tiket-discount"></b>
+              </div>
+              <div class="ticket-cell"><span class="label">Total dibayar</span><b id="tiket-total"></b></div>
+            </div>
+
+            <div class="ticket-stub">
+              <div class="barcode" id="tiket-barcode"></div>
+              <span class="label" id="tiket-stub-meta"></span>
+            </div>
+          </div>
+
+          <div class="cancelled-note" id="tiket-cancelled" hidden>
+            Pesanan ini sudah dibatalkan dan tiketnya tidak berlaku lagi.
+          </div>
+
+          <div class="foot-actions foot-center">
+            <button class="btn btn-ghost" type="button" id="btn-cancel">Batalkan pesanan</button>
+            <a class="btn btn-ghost" href="pesanan.html">Lihat pesanan saya</a>
+            <a class="btn btn-primary" href="index.html">Pesan perjalanan lain</a>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">NusantaraExpress 1.0.0 &middot; Data pesanan tersimpan lokal di perangkat ini, tanpa database.</footer>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="data.js"></script>
+    <script src="store.js"></script>
+    <script src="common.js"></script>
+    <script src="i18n.js"></script>
+    <script src="js/tiket.js"></script>
+  </body>
+</html>

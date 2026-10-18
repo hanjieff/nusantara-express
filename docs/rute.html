@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src 'self'"
+    />
+    <title>Pilih perjalanan &mdash; NusantaraExpress</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <div class="topbar-inner">
+          <div class="brand">
+            <div class="brand-mark">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v11" /><path d="M4 11h16" /><path d="M3 17h18" /><path d="M7 17v2.5" /><path d="M17 17v2.5" /><circle cx="7.5" cy="14" r=".9" fill="currentColor" stroke="none" /><circle cx="16.5" cy="14" r=".9" fill="currentColor" stroke="none" /></svg>
+            </div>
+            <div>
+              <div class="brand-name">NusantaraExpress</div>
+              <div class="brand-sub">Travel within the archipelago</div>
+            </div>
+          </div>
+          <nav class="nav">
+            <a class="nav-btn" href="index.html"><span>Beranda</span></a>
+            <a class="nav-btn" href="pesanan.html">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1" /><path d="M3.5 4.5V9H8" /><path d="M12 8v4.4l3 1.8" /></svg>
+              <span>Pesanan saya</span><span class="badge" id="order-count">0</span>
+            </a>
+            <div class="user-chip">
+              <div class="avatar" id="user-avatar">?</div>
+              <span class="user-name" id="user-name"></span>
+              <button class="logout" id="btn-logout" type="button">Keluar</button>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <div class="wrap">
+          <div class="page-head">
+            <div>
+              <div class="eyebrow eyebrow-muted">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="6" cy="6" r="2.4" /><circle cx="18" cy="18" r="2.4" /><path d="M8.4 6H14a3 3 0 0 1 0 6h-4a3 3 0 0 0 0 6h5.6" /></svg>
+                Pilih rute
+              </div>
+              <h1>
+                <span id="head-from"></span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6.5 18.5 12 13 17.5" /></svg>
+                <span id="head-to"></span>
+              </h1>
+              <div class="page-sub" id="head-sub"></div>
+            </div>
+            <div class="stepper">
+              <span class="step current"><b>01</b> Trip</span><span class="step-line"></span>
+              <span class="step"><b>02</b> Passenger</span><span class="step-line"></span>
+              <span class="step"><b>03</b> Payment</span>
+            </div>
+          </div>
+
+          <div class="layout">
+            <div>
+              <section class="panel">
+                <div class="block">
+                  <h2>Pilih kelas</h2>
+                  <p class="hint">Semua kelas sudah termasuk AC dan satu tas kabin.</p>
+                  <div class="kelas-list" id="kelas-list"></div>
+                </div>
+
+                <div class="block">
+                  <h3 class="block-title">Pilih tanggal</h3>
+                  <p class="hint">Kapan kamu ingin berangkat?</p>
+                  <label class="stacked">
+                    <span class="field-label">Tanggal perjalanan</span>
+                    <div class="field field-wide">
+                      <div class="field-row">
+                        <span class="ico-sage"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5" /><path d="M3.5 10h17M8 3.5V7M16 3.5V7" /></svg></span>
+                        <input type="date" id="trip-date" />
+                      </div>
+                    </div>
+                  </label>
+                  <p class="hint" id="trip-dayname" style="margin-top: 10px"></p>
+                </div>
+
+                <div class="block">
+                  <h3 class="block-title">Pilih waktu keberangkatan</h3>
+                  <div class="chips" id="time-chips"></div>
+                </div>
+
+                <div class="block">
+                  <h3 class="block-title">Penumpang</h3>
+                  <div class="counter">
+                    <span class="meta meta-ink">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="8.5" r="3.6" /><path d="M5 20c1.3-3.4 4-5 7-5s5.7 1.6 7 5" /></svg>
+                      <b id="pax-label">1</b>&nbsp;penumpang &middot; kursi
+                    </span>
+                    <span class="counter-val">
+                      <button class="round" type="button" id="pax-minus">&minus;</button>
+                      <b id="pax-value">1</b>
+                      <button class="round" type="button" id="pax-plus">+</button>
+                    </span>
+                  </div>
+                  <p class="hint" style="margin-top: 10px">Maksimal 4 kursi untuk satu kali pemesanan.</p>
+                  <div class="note" id="disc-note">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 3.5H20V11l-8.6 8.6a2 2 0 0 1-2.9 0l-5.6-5.6a2 2 0 0 1 0-2.9Z" /><circle cx="16.4" cy="7.6" r="1.3" fill="currentColor" stroke="none" /></svg>
+                    <span id="disc-note-text"></span>
+                  </div>
+                </div>
+              </section>
+
+              <div class="foot-actions">
+                <button class="btn btn-primary btn-block btn-lg" type="button" id="btn-continue">Isi data penumpang</button>
+              </div>
+            </div>
+
+            <aside class="summary">
+              <div class="summary-head">
+                <span class="label">Ringkasan perjalanan</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v11" /><path d="M4 11h16" /><path d="M3 17h18" /><path d="M7 17v2.5" /><path d="M17 17v2.5" /></svg>
+              </div>
+              <div class="summary-route">
+                <span id="sum-from"></span><span class="dashed"></span><span class="dur" id="sum-duration"></span><span class="dashed"></span><span id="sum-to"></span>
+              </div>
+              <div class="summary-rows">
+                <div class="srow"><span>Kelas</span><b id="sum-class"></b></div>
+                <div class="srow"><span>Tanggal perjalanan</span><b id="sum-date"></b></div>
+                <div class="srow"><span>Keberangkatan</span><b id="sum-time"></b></div>
+                <div class="srow"><span>Harga per kursi</span><b id="sum-unit"></b></div>
+                <div class="srow"><span>Penumpang</span><b id="sum-pax"></b></div>
+                <div class="srow"><span>Subtotal</span><b id="sum-subtotal"></b></div>
+                <div class="srow srow-discount" id="row-discount" hidden>
+                  <span>Diskon rombongan (10%)</span><b id="sum-discount"></b>
+                </div>
+                <div class="srow"><span>Operator</span><b id="sum-operator"></b></div>
+              </div>
+              <div class="summary-total"><span class="label">Total</span><b id="sum-total"></b></div>
+            </aside>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <template id="tpl-kelas">
+      <button class="kelas-opt" type="button">
+        <span class="kelas-ico">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 4.5h3.2a2 2 0 0 1 2 2v8.5H6.5a2 2 0 0 1-2-2V6.5a2 2 0 0 1 2-2Z" /><path d="M11.7 15v2.8a1.7 1.7 0 0 1-1.7 1.7H5.5" /><path d="M14.5 8.5h3.7a2.3 2.3 0 0 1 2.3 2.3v4.2" /></svg>
+        </span>
+        <span class="kelas-text">
+          <span class="kelas-label" data-field="label"></span>
+          <span class="kelas-perks" data-field="perks"></span>
+        </span>
+        <span class="kelas-price" data-field="price"></span>
+        <span class="pay-check">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.8 9.8 17.5 19 7" /></svg>
+        </span>
+      </button>
+    </template>
+
+    <template id="tpl-time">
+      <button class="chip" type="button">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="8.5" /><path d="M12 7.8V12l3 1.8" /></svg>
+        <span data-field="time"></span>
+      </button>
+    </template>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="data.js"></script>
+    <script src="store.js"></script>
+    <script src="common.js"></script>
+    <script src="i18n.js"></script>
+    <script src="js/rute.js"></script>
+  </body>
+</html>
