@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src 'self'"
+    />
+    <title>Masuk &mdash; NusantaraExpress</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="auth-shell">
+      <section class="auth-aside">
+        <div class="brand">
+          <div class="brand-mark" style="background: rgba(248, 246, 236, 0.14)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v11" /><path d="M4 11h16" /><path d="M3 17h18" /><path d="M7 17v2.5" /><path d="M17 17v2.5" /><circle cx="7.5" cy="14" r=".9" fill="currentColor" stroke="none" /><circle cx="16.5" cy="14" r=".9" fill="currentColor" stroke="none" /></svg>
+          </div>
+          <div>
+            <div class="brand-name" style="color: var(--cream)">NusantaraExpress</div>
+            <div class="brand-sub" style="color: rgba(248, 246, 236, 0.6)">Travel within the archipelago</div>
+          </div>
+        </div>
+
+        <div>
+          <h2>Jelajahi pulau-pulau Indonesia dengan nyaman.</h2>
+          <p>Pesan tiket bus antarkota untuk 7 rute pilihan di Jawa dan Sumatra. Hangat, sederhana, terpercaya.</p>
+          <div class="aside-list">
+            <div class="aside-item">
+              <span class="dot"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="6" cy="6" r="2.4" /><circle cx="18" cy="18" r="2.4" /><path d="M8.4 6H14a3 3 0 0 1 0 6h-4a3 3 0 0 0 0 6h5.6" /></svg></span>
+              4 rute Jawa &middot; 3 rute Sumatra
+            </div>
+            <div class="aside-item">
+              <span class="dot"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 8V6.5A1.5 1.5 0 0 1 5.5 5h13A1.5 1.5 0 0 1 20 6.5V8a3 3 0 0 0 0 8v1.5A1.5 1.5 0 0 1 18.5 19h-13A1.5 1.5 0 0 1 4 17.5V16a3 3 0 0 0 0-8Z" /><path d="M12 8.5v7" /></svg></span>
+              Tiket digital dengan kode booking
+            </div>
+            <div class="aside-item">
+              <span class="dot"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 3.2 5 6v6c0 4.2 3 7.4 7 8.8 4-1.4 7-4.6 7-8.8V6l-7-2.8Z" /></svg></span>
+              Pembayaran simulasi, tanpa biaya sungguhan
+            </div>
+          </div>
+        </div>
+
+        <div class="eyebrow">Sejak 2026 &middot; Jakarta &rarr; Pagaralam</div>
+      </section>
+
+      <section class="auth-main">
+        <div class="auth-card">
+          <div class="auth-tabs">
+            <button class="auth-tab active" id="tab-login" type="button">Masuk</button>
+            <button class="auth-tab" id="tab-signup" type="button">Daftar</button>
+          </div>
+
+          <h1 id="auth-title">Selamat datang kembali</h1>
+          <p id="auth-sub">Masuk untuk melanjutkan perjalanan.</p>
+
+          <div class="error" id="auth-error" hidden></div>
+
+          <form class="form-grid" id="form-login">
+            <label>
+              <span class="field-label">Email</span>
+              <input class="input" id="login-email" type="email" placeholder="nama@email.com" autocomplete="username" required />
+            </label>
+            <label>
+              <span class="field-label">Password</span>
+              <input class="input" id="login-password" type="password" placeholder="Minimal 6 karakter" autocomplete="current-password" required />
+            </label>
+            <button class="btn btn-primary btn-block btn-lg" type="submit">Masuk</button>
+            <p class="auth-foot">Belum punya akun? <button class="link-btn" type="button" id="to-signup">Daftar di sini</button></p>
+          </form>
+
+          <form class="form-grid" id="form-signup" hidden>
+            <label>
+              <span class="field-label">Nama lengkap</span>
+              <input class="input" id="signup-name" type="text" placeholder="Nama kamu" required />
+            </label>
+            <label>
+              <span class="field-label">Email</span>
+              <input class="input" id="signup-email" type="email" placeholder="nama@email.com" autocomplete="username" required />
+            </label>
+            <label>
+              <span class="field-label">Nomor telepon</span>
+              <input class="input" id="signup-phone" type="tel" placeholder="081234567890" required />
+            </label>
+            <label>
+              <span class="field-label">Password</span>
+              <input class="input" id="signup-password" type="password" placeholder="Minimal 6 karakter" autocomplete="new-password" required />
+            </label>
+            <button class="btn btn-primary btn-block btn-lg" type="submit">Daftar sekarang</button>
+            <p class="auth-foot">Sudah punya akun? <button class="link-btn" type="button" id="to-login">Masuk</button></p>
+          </form>
+
+          <div class="demo-note">
+            Aplikasi ini memang <b>tidak memakai database</b>. Akun, sesi, dan pesanan disimpan di penyimpanan lokal
+            aplikasi pada perangkat ini, sehingga hilang bila data aplikasi dihapus.
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="data.js"></script>
+    <script src="store.js"></script>
+    <script src="common.js"></script>
+    <script src="i18n.js"></script>
+    <script src="js/login.js"></script>
+  </body>
+</html>

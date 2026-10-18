@@ -1,0 +1,55 @@
+{
+  "name": "nusantara-express",
+  "productName": "NusantaraExpress",
+  "version": "1.0.0",
+  "description": "Aplikasi pembelian tiket bus antarkota untuk rute Jawa dan Sumatra",
+  "main": "src/main/main.js",
+  "author": "NusantaraExpress",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "preview": "electron . --devtools",
+    "dist": "electron-builder --win --x64",
+    "dist:dir": "electron-builder --win --dir"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "id.nusantara.express",
+    "productName": "NusantaraExpress",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        },
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "build/icon.png",
+      "artifactName": "${productName}-${version}-${os}-${arch}.${ext}"
+    },
+    "portable": {
+      "artifactName": "${productName}-Portable-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "artifactName": "${productName}-Setup-${version}.${ext}"
+    }
+  }
+}

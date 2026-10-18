@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src 'self'"
+    />
+    <title>Beranda &mdash; NusantaraExpress</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <div class="topbar-inner">
+          <div class="brand">
+            <div class="brand-mark">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v11" /><path d="M4 11h16" /><path d="M3 17h18" /><path d="M7 17v2.5" /><path d="M17 17v2.5" /><circle cx="7.5" cy="14" r=".9" fill="currentColor" stroke="none" /><circle cx="16.5" cy="14" r=".9" fill="currentColor" stroke="none" /></svg>
+            </div>
+            <div>
+              <div class="brand-name">NusantaraExpress</div>
+              <div class="brand-sub">Travel within the archipelago</div>
+            </div>
+          </div>
+          <nav class="nav">
+            <a class="nav-btn" href="index.html"><span>Beranda</span></a>
+            <a class="nav-btn" href="pesanan.html">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1" /><path d="M3.5 4.5V9H8" /><path d="M12 8v4.4l3 1.8" /></svg>
+              <span>Pesanan saya</span><span class="badge" id="order-count">0</span>
+            </a>
+            <div class="user-chip">
+              <div class="avatar" id="user-avatar">?</div>
+              <span class="user-name" id="user-name"></span>
+              <button class="logout" id="btn-logout" type="button">Keluar</button>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <div class="wrap">
+          <section class="hero">
+            <svg class="hero-art" viewBox="0 0 900 380" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+              <circle cx="700" cy="95" r="62" fill="#D9C9A8" opacity=".85" />
+              <path d="M470 380 700 120 900 380Z" fill="#8FAE8A" opacity=".38" />
+              <path d="M600 380 780 190 900 380Z" fill="#8FAE8A" opacity=".28" />
+              <path d="M0 340 Q300 250 900 330 L900 380 L0 380Z" fill="#D9C9A8" opacity=".22" />
+              <g stroke="#F8F6EC" stroke-width="3" fill="none" opacity=".5"><path d="M640 250 h60 M620 290 q100 -30 260 -10" /></g>
+              <g transform="translate(560,205)" stroke="#F8F6EC" stroke-width="3" fill="none" opacity=".9">
+                <rect x="0" y="0" width="72" height="52" rx="10" />
+                <path d="M0 22 h72" /><path d="M12 52 v9 M60 52 v9" />
+                <circle cx="20" cy="37" r="3" fill="#F8F6EC" /><circle cx="52" cy="37" r="3" fill="#F8F6EC" />
+              </g>
+            </svg>
+
+            <div class="eyebrow">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 3.5 13.6 9 19 10.6 13.6 12.2 12 17.7 10.4 12.2 5 10.6 10.4 9 12 3.5Z" /></svg>
+              Perjalanan lokal, cerita yang tinggal
+            </div>
+            <h1>Jelajahi pulau-pulau Indonesia dengan nyaman.</h1>
+            <p>Pesan perjalanan antarkota yang hangat, sederhana, dan terpercaya.</p>
+
+            <form class="search" id="form-search">
+              <div class="field">
+                <span class="label">Dari</span>
+                <div class="field-row">
+                  <span class="ico-sage"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" /><circle cx="12" cy="10" r="2.6" /></svg></span>
+                  <select id="search-from" name="from"></select>
+                </div>
+              </div>
+
+              <button class="swap" type="button" id="btn-swap" title="Tukar kota">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8H3.5M5.5 5.5 3 8l2.5 2.5" /><path d="M17 16h3.5M18.5 13.5 21 16l-2.5 2.5" /></svg>
+              </button>
+
+              <div class="field">
+                <span class="label">Ke</span>
+                <div class="field-row">
+                  <span class="ico-sage"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" /><circle cx="12" cy="10" r="2.6" /></svg></span>
+                  <select id="search-to" name="to"></select>
+                </div>
+              </div>
+
+              <div class="field">
+                <span class="label">Tanggal perjalanan</span>
+                <div class="field-row">
+                  <span class="ico-sage"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5" /><path d="M3.5 10h17M8 3.5V7M16 3.5V7" /></svg></span>
+                  <input type="date" id="search-date" name="date" />
+                </div>
+              </div>
+
+              <button class="btn btn-primary" type="submit">Cari perjalanan</button>
+            </form>
+
+            <div class="hero-meta" id="hero-meta"></div>
+          </section>
+
+          <section>
+            <div class="section-head">
+              <div>
+                <div class="eyebrow eyebrow-muted">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="6" cy="6" r="2.4" /><circle cx="18" cy="18" r="2.4" /><path d="M8.4 6H14a3 3 0 0 1 0 6h-4a3 3 0 0 0 0 6h5.6" /></svg>
+                  Rute pilihan
+                </div>
+                <h2>Rute pilihan</h2>
+              </div>
+              <div class="tabs" id="filter-tabs">
+                <button class="tab active" type="button" data-region="Semua">Semua rute<span class="count" id="count-all"></span></button>
+                <button class="tab" type="button" data-region="Jawa">Jawa<span class="count" id="count-jawa"></span></button>
+                <button class="tab" type="button" data-region="Sumatra">Sumatra<span class="count" id="count-sumatra"></span></button>
+              </div>
+            </div>
+
+            <div class="grid" id="route-grid"></div>
+            <div class="empty" id="route-empty" hidden>Tidak ada rute untuk filter ini.</div>
+          </section>
+        </div>
+      </main>
+
+      <footer class="footer">NusantaraExpress 1.0.0 &middot; Data pesanan tersimpan lokal di perangkat ini, tanpa database.</footer>
+    </div>
+
+    <template id="tpl-route">
+      <article class="card">
+        <div class="route-art">
+          <svg viewBox="0 0 320 132" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M120 0 320 132 320 0Z" fill="#F8F6EC" opacity=".18" />
+            <path d="M0 132 150 24 250 132Z" fill="#2F5D3A" opacity=".18" />
+            <circle cx="252" cy="34" r="17" fill="#F8F6EC" opacity=".45" />
+          </svg>
+          <span class="tag" data-field="region"></span>
+        </div>
+        <div class="card-body">
+          <div class="route-title">
+            <span data-field="from"></span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6.5 18.5 12 13 17.5" /></svg>
+            <span data-field="to"></span>
+          </div>
+          <div class="meta-row">
+            <span class="meta">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="8.5" /><path d="M12 7.8V12l3 1.8" /></svg>
+              <span data-field="duration"></span>
+            </span>
+            <span class="meta">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" /><circle cx="12" cy="10" r="2.6" /></svg>
+              <span data-field="departures"></span>
+            </span>
+          </div>
+          <p class="card-note" data-field="note"></p>
+          <div class="card-foot">
+            <div class="price"><small>from</small><strong data-field="price"></strong><small>/ orang</small></div>
+            <button class="btn btn-ghost btn-sm" type="button" data-field="choose">Pilih rute</button>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="data.js"></script>
+    <script src="store.js"></script>
+    <script src="common.js"></script>
+    <script src="i18n.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
